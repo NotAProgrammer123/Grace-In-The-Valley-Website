@@ -1,0 +1,307 @@
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.0.5/swiper-bundle.min.js" integrity="sha512-2Vn9P9cWfNk1MITUXMzKCgQq9nInmH1UaK6c0fnBnBoO/6V8Vew043TYqu+6KdDyiI7d6sVFgAwY3/D/Ndr1rg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.caroufredsel/6.2.1/jquery.carouFredSel.packed.js" integrity="sha512-5Thlno/Mv5W8d5z7eEuOahEZ3nXZ0uAuOgf8m7p7+/9Ltkzt9sn9z6sR87m/9bqW9vqpywUq65YeNW0MuzW9Bw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+  <header>
+    <div class="logo">
+      <div class="bars"></div>
+      <h2>Finding Grace In The Valley</h2>
+    </div>
+  
+    <nav>
+      <ul class="nav__links">
+        <li><a href="http://192.168.43.99:8000/home"><i class="fi-sr-home"></i><span>Home</span></a></li>
+        <li><a href="http://192.168.43.99:8000/my-life-story"><i class="fi-sr-document"></i><span>My Life Story</span></a></li>
+        <li><a href="http://192.168.43.99:8000/about-author"><i class="fi-sr-folder"></i><span>About Author</span></a></li>
+        <li><a href="http://192.168.43.99:8000/purchase"><i class="fi-sr-comment-alt"></i><span>Purchase Book</span></a></li>
+        <li><a href="http://192.168.43.99:8000/contact-page"><i class="fi-sr-smartphone"></i><span>Contact Us</span></a></li>
+      </ul>
+    </nav>
+    <section>
+      <span><i class="fi-rr-search"></i></span>
+      <span><i class="fi-sr-bell"></i></span>
+      <img src="Finding Grace Cover4.jpg" alt="">
+    </section>
+  </header>
+
+  <div class="container">
+    <div class="item1">
+      <div id="carouselExampleIndicators" class="carousel slide" data-interval="false" style="min-height: 100vh;">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+        </ol>
+        <div class="carousel-inner">
+          
+          <div class="carousel-item active">
+            <img class="card-img-top" src="Finding Grace Cover4.jpg" alt="Card image cap"  style="height: 100vh; float: left; min-width: 50vw">
+          </div>
+          
+          <div class="carousel-item">
+              <img class="card-img-top" src="sheep.jpg" alt="Card image cap"  style="float: left; min-width: 50vw; height: 100vh; margin-bottom: 0px;">
+         </div>
+
+         <div class="carousel-item">
+          <img class="card-img-top" src="tree2.jpg" alt="Card image cap"  style="float: left; min-width: 50vw; height: 100vh; margin-bottom: 0px;">
+         </div>
+
+         <div class="carousel-item">
+          <img class="card-img-top" src="rocks.jpg" alt="Card image cap"  style="float: left; min-width: 50vw; height: 100vh; margin-bottom: 0px;">
+         </div>
+
+         <div class="carousel-item">
+          <img class="card-img-top" src="heaven.jpg" alt="Card image cap"  style="float: left; min-width: 50vw; height: 100vh; margin-bottom: 0px;">
+         </div>
+        
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="item2">
+      <div id="carousel" class="carousel slide" data-interval="false">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="doves and nature 1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">The book is dedicated to the orphans around the world (and everyone
+                  seeking God), to make them aware of God’s love for them and to glorify
+                  Him.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="beauty.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">  
+                  It depicts a life of great tribulation (life’s challenges and spiritual
+                  warfare), a fighting spirit, and unveiling the meaning of faith.
+                  This was a journey travelled with God, but unknowingly so. Ultimately,
+                  it is about achieving victory through the Lord Jesus Christ.
+                  This book seeks to: (turn to next slide)
+                   </p>
+              </div>
+            </div>
+         </div>
+
+         <div class="carousel-item">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="tree.jpg" alt="Card image cap">
+            <div class="card-body">
+              <p class="card-text">  
+                 - Soothe your pain, and to make you realise that even if your
+                 parents had to leave, your Heavenly Father is always with you;<br>
+                 
+                 <br>- Encourage you to trust Him to make better choices for yourself;<br>
+                 </p>
+            </div>
+          </div>
+       </div>
+
+          
+          
+          <div class="carousel-item">
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="drop1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <p class="card-text">  
+                  <br>- Impart to you the knowledge that God created you as a warrior,
+                  an overcomer, and that there are no coincidences in this world; <br>
+
+                  <br> - Encourage you to always invite the Holy Spirit for divine guidance in your life; <br>
+              </div>
+            </div>
+         </div>
+         <div class="carousel-item">
+          <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="fjords.jpg" alt="Card image cap" style="height: 150px;">
+            <div class="card-body">
+              <p class="card-text">  
+                <br>- Share with you, the author's story of fear and loneliness in the
+                valley, to help you overcome yours; <br>
+                
+                 
+                <br>- Encourage you to never let the devil steal your joy, hope, or
+                your peace. These are tools necessary for this journey! <br>
+                
+                
+                <br> - Inspire you, the reader, to share your story so that others may
+                benefit from it; <br>
+                
+                 
+                <br>- Share with you about discovering the author's destiny and
+                purpose. <br>
+                 </p>
+            </div>
+          </div>
+       </div>
+       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+        </div>
+      </div>
+    </div>
+
+    
+
+   
+</div>
+<section class="footer">
+
+  <footer class="page-footer font-small teal pt-4">
+
+      <!-- Footer Text -->
+      <div class="container-fluid text-center text-md-left">
+    
+        <!-- Grid row -->
+        <div class="row">
+    
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+    
+            <!-- Content -->
+            <h5 class="text-uppercase font-weight-bold">Footer text 1</h5>
+            <p>This book is protected by copyright laws. This book may not be copied or duplicated without the authorisation of the publisher of the book</p>
+    
+          </div>
+          <!-- Grid column -->
+    
+          <hr class="clearfix w-100 d-md-none pb-3">
+    
+          <!-- Grid column -->
+          <div class="col-md-6 mb-md-0 mb-3">
+    
+            <!-- Content -->
+            <h5 class="text-uppercase font-weight-bold">Footer text 2</h5>
+            <p>Failiure to comply with the copyright laws that apply to this book can result in legal consequences</p>
+    
+          </div>
+          <!-- Grid column -->
+    
+        </div>
+        <!-- Grid row -->
+    
+      </div>
+      <!-- Footer Text -->
+    
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="http://192.168.43.99:8000/home">Finding Grace In The Valley</a>
+      </div>
+      <!-- Copyright -->
+    
+    </footer>
+    <!-- Footer -->
+    </section>
+</body>
+
+<script>
+  var arrowed = false;
+  var carousel1 = $('#carouselExampleIndicators').carousel();
+  var carousel2= $('#carousel').carousel();
+  carousel1.on('slide.bs.carousel', function(event) {
+ 
+  var to = $(event.relatedTarget).index();
+  carousel2.carousel(to);
+});
+
+$('#carouselExampleIndicators').carousel({
+  interval: false,
+});
+
+$('#carousel').carousel({
+  interval: false,
+});
+</script>
+ 
+<script>
+  var socket = io.connect('http://192.168.43.99:8000');
+
+ 
+
+function handleCookie () {
+let cookie = document.cookie;
+                  if (cookie.indexOf("loggedOut=") === -1) {
+                      //do nothing
+                  } else {
+          var str =  cookie.replace("loggedOut=", "")
+                      socket.emit("userSeen", str);
+                  }
+  }
+
+ window.onload = handleCookie();
+
+socket.on("newMessage", (targetUsername) => {
+  var cookie = document.cookie;
+  var name = cookie.replace("username=", "");
+  name === targetUsername ? alert("You have a message from the website Admin") : ""; 
+})
+
+socket.on("checkNewAdminMessages", (count) => {
+  if (count > 0) {
+    alert("You have new message(s) from the website Admin");
+  }
+})
+  
+
+window.onload = () => {
+  var cookie = document.cookie;
+  if (cookie.indexOf("loggedOut=") === -1) {
+    //do nothing
+  } else {
+    //code for when user has new messages
+  }
+}
+
+const activeLinks = document.querySelectorAll('.nav__links li'),
+menu = document.querySelector('.bars');
+let menuState = false;
+menu.addEventListener('click',showMenu);
+function showMenu(){
+    if(!menuState){
+        menu.classList.add("is-active");
+        document.querySelector('.nav__links').classList.add('open');
+        menuState =true;
+    }else{
+        menu.classList.remove("is-active");
+        document.querySelector('.nav__links').classList.remove('open');
+        menuState =false;
+    }
+}
+activeLinks.forEach((item) => {
+    item.addEventListener('click',activateLinks);
+});
+function activateLinks(){
+    activeLinks.forEach((item) => {
+        item.classList.remove('active');
+    });
+    this.classList.add('active')
+}
+</script>

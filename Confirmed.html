@@ -1,0 +1,32 @@
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<noscript>This website needs JavaScript to work. Please enable your JavaScript to continue.</noscript>
+
+<h1>Email changed! You will be redirected to the login page in <h1 id="count"></h1><h1>seconds</h1> </h1>
+<a href = "http://192.168.43.99:8000/login"><h1>Click here if you are not redirected within 3 seconds</h1></a>
+
+<script type="text/javascript">
+    function openLogin() {
+    window.location.href = "http://192.168.43.99:8000/login";    
+}
+
+function redirect() {
+    setTimeout(openLogin, 3000)
+    
+    function count () {
+    var sec = 3;
+setInterval(function() {
+document.getElementById("count").innerHTML = sec;
+sec--;
+}, 1000);
+if (sec === 0) {
+  clearInterval();
+}
+}
+count();
+}
+
+window.onload= redirect();
+</script>
+    
+
+    

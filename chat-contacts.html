@@ -1,0 +1,167 @@
+<html>
+    <head>
+      <meta name="viewport" content="width=device-width,initial-scale=1.0">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+
+    <noscript>This website needs JavaScript to work. Please enable your JavaScript to continue.</noscript>
+
+    <body>
+        <div class="contacts">
+          <div class="messages">
+          <div class="badge">
+              <div class="message-count" id = "count">0</div>
+            </div>
+          </div>
+
+          <button type="button" id="btnBlock" class="btn btn-light" id="block" onclick="blockUsers()">Block a User</button>
+          <button type="button" class="btn btn-danger" id="cancel" onclick="cancel()" style="visibility: hidden;">Cancel</button>
+          
+         
+          <button type="button" class="btn btn-dark" id="logout" onclick="logout()" style="float: right;" >Log Out</button>
+          
+
+          
+            <h1 class="contacts__title">My contacts</h1>
+            
+              <ul class="contacts__list" id="allcontacts">
+                <a><li class="contacts__item" id="heading"><div class = "contact" style="border: none;">Contacts Will Appear Here</div></li></a>
+                <li class ="contacts__item" id = "anchor"><hr></li>
+              </ul>
+              <br>
+          </div> 
+         
+    </body>
+</html>
+
+<style>
+   body {
+  font-family: monospace;
+}
+
+.contacts {
+  background-color: lavender;
+  padding: 1rem;
+  height: 80vh;
+  margin: 2rem auto;
+  max-width: 30rem;
+  overflow: scroll;
+}
+
+.contacts__title {
+  padding-bottom: 1rem;
+  text-align: center;
+}
+
+.contacts__subtitle {
+  background-color: rgba(white, 0.5);
+  padding: 0.5rem;
+  position: sticky;
+  top: 0;
+}
+
+.contacts__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.contacts__item:not(:last-child) {
+  margin-bottom: 1rem;
+} 
+
+.contact {
+    min-height: 5vh; 
+    border-style: solid;
+}
+
+
+
+
+
+.message-count {
+  color: #fff;
+  font-size: 10px;
+  font-family: Arial, san-serif;
+  font-weight: bold;
+}
+
+
+.badge {
+  position: absolute;
+  right: 0px;
+  top: -5px;
+  z-index: 10;
+}
+
+.messages img {
+  width: 15px;
+  height: auto;
+}
+
+.messages {
+  width: 31px;
+  height: 19px;
+  background-image: url(https://i.imgur.com/aoXZqPc.gif);
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  display: inline-block;
+  vertical-align: top;
+  margin: 15% 0 0 0;
+  position: relative;
+}
+
+.badge {
+  background: radial-gradient( 5px -9px, circle, white 8%, #ed2324 26px );
+  background: -moz-radial-gradient( 5px -9px, circle, white 8%, #ed2324 26px );
+  background: -ms-radial-gradient( 5px -9px, circle, white 8%, #ed2324 26px );
+  background: -o-radial-gradient( 5px -9px, circle, white 8%, #ed2324 26px );
+  background: -webkit-radial-gradient( 5px -9px, circle, white 8%, #ed2324 26px );
+  background-color: #ed2324;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  padding: 5% 5%;
+  position: relative;
+  right: -5.8px;
+  top: -9px;
+  float: right;
+  display: block;
+}
+
+.message-count {
+  position: relative;
+  display: block;
+  font: bold 14px/13px Helvetica, Verdana, Tahoma;
+  text-align: center;
+  margin: 0;
+  top: 2px;
+}
+
+.badge-container {
+  background: #377049;
+  line-height: 30px;
+  height: 30px;
+  width: 30px;
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  box-shadow: 0px 0px 2px 3px rgba(55, 112, 73, 0.3);
+}
+
+.badge__value {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 14px;
+}
+
+body {
+  background: #F0EEEE;
+}
+
+</style>
+
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript" src="Chat-Contacts.js"></script>   

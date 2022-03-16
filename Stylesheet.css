@@ -1,0 +1,27 @@
+.container {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr;
+}
+
+.nav-wrapper {
+    grid-area: nav-wrapper;
+    vertical-align: top;
+    background-color: darkgray;
+}
+
+
+
+.body {
+    grid-area: body;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: yellow;
+}
+
+.footer {
+    grid-area: footer;
+    background-image: url('heaven.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}

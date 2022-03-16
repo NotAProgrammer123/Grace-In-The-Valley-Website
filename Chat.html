@@ -1,0 +1,332 @@
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">	
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	</head>
+
+	<noscript>This website needs JavaScript to work. Please enable your JavaScript to continue.</noscript>
+
+
+	<body>
+		
+		<div class="header-area" style="min-width: 100vw;">
+			<img src="back.png" alt="Go Back" onclick = "back()" style="min-width: 5vw; height: 5vh;">
+			<button onclick = "logout()" id="out" style=" float:right; height: 5vh; width: 5rem; background-color: rgb(238, 255, 0); color: black;">Log Out</button>
+		  </div>
+
+		  <div class="message-area" id="message-area"></div>
+		
+		<div class = "container" style="display: flex;">
+			<div class="typing-area">
+				<a class = "anchor" tabindex="0"></a>
+			<textarea class="typing-box" id="typing-box"></textarea>
+			<button class="send-button" id = "submit" onclick="sendMessage()"> Send </button>
+		</div>
+
+		</div>
+		
+	</body>
+</html>
+
+<style>
+
+* {
+				font-family: sans-serif;
+				margin: 0;
+				padding: 0;
+				overflow-x: hidden;
+			}
+		
+			.header-area {
+				height: 6%;
+				background: rgb(0 127 255);
+				box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
+				color: white;
+				padding: 4px;
+			}
+
+	.message-area {
+				height: 80%;
+				width: 100vw;
+				padding: 1.1vh;
+				overflow: auto;
+			}
+			
+			.typing-area {
+				margin-top: 4px;
+				padding: 4px;
+				height: 8vh;
+			}
+			
+			.typing-box {
+				width: 88vw;
+				height: 10vh;
+				resize: none;
+				border: 0.1rem solid black;
+				position: fixed;
+				bottom: 1vh;
+				
+			}
+			
+			.send-button {
+				border: 0;
+				margin-right: 0vw;
+				min-width: 10vw;
+				height: 8vh;
+				background: rgb(32, 235, 25);
+				color: white;
+				position: absolute;
+				right: 0;
+				bottom: 1vh;
+				position: fixed; 
+				bottom: 2vh; 
+				right: 0vw;
+			}
+			
+			.message-box {
+				margin-top: 10px;
+			}
+			
+			.my-message-box {
+				text-align: right;
+				background: white;
+			}
+			
+			.message {
+				max-width: 70%;
+				border-radius: 5%;
+				padding: 5px;
+				box-shadow: 0 0.25rem 0.25rem rgba(0, 0, 0, 0.2), 0 0 1rem rgba(0, 0, 0, 0.2);
+			}
+			
+			.my-message {
+				float: right;
+				margin-right: 1vw;
+				background: rgb(0 127 255);
+				color: white;
+			}
+			
+			.others-message {
+				float: left;
+				background: white;
+			}
+			
+			.separator {
+				width: 100%;
+				height: 8px;
+				float: left;
+			}
+
+			a:hover {
+ 				cursor:pointer;
+			}
+
+			button:hover {
+ 				cursor:pointer;
+			}
+
+			img:hover {
+ 				cursor:pointer;
+			}
+
+			@media screen and (max-width: 300px) {
+				.typing-box {
+					width: 85vw;
+				}
+			}
+
+			@media screen and (max-width: 750px) {
+				.my-message {
+					margin-right: 3vw;
+				}
+			}
+</style>
+
+<script>
+	var socket = io.connect('http://192.168.43.99:8000');
+
+	function stripHTML(str) {
+		if ((str === null) || (str === '')) {
+			return "";
+		} 
+		else {
+		  str = str.toString();
+		  return str.replace(/(<([^>]+)>)/ig, '');
+		}
+	}
+
+var input = document.getElementById('typing-box');
+input.addEventListener("keyup", (event) => {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		document.getElementById("submit").click();
+	}
+})
+
+socket.on('message-from-others', (data) => {
+	if (data.senderID !== socket.id) {
+		receiveMessage();
+	}
+
+	function receiveMessage () {
+		var html;	
+			if (data.who === "Admin") {
+	html = '<div class="message-box others-message-box">' +
+		   '<div class="message others-message"> ' + "Admin: " + stripHTML(data.message) + ' </div>' +
+			'<div class="separator"></div>' +'</div>';
+} else {
+	html = '<div class="message-box others-message-box">' +
+		   '<div class="message others-message"> ' + data.who + ': ' + stripHTML(data.message) + ' </div>' +
+			'<div class="separator"></div>' +'</div>';
+}
+	
+		document.getElementById("message-area").innerHTML += html;
+	}
+});
+
+function sendMessage() {
+
+	function makeMessage() {
+		var message = document.getElementById("typing-box").value;
+			var html = '<div class="message-box my-message-box">' +
+							'<div class="message my-message"> ' + "You: " + stripHTML(message) + ' </div>' +
+							'<div class="separator"></div>' +
+						'</div>';
+						
+			document.getElementById("message-area").innerHTML += html;
+			document.getElementById("typing-box").value = "";
+			let cookie = document.cookie.replace("username=", "");
+			socket.emit('message', {message: message, id: socket.id, username: cookie})
+	  }
+			
+			makeMessage();
+	}
+
+
+
+		window.onload = function () {
+		document.querySelector('.anchor').focus({preventScroll: false});
+		if (document.referrer !== "http://192.168.43.99:8000/chat-contacts") {
+			var username = document.cookie;
+			username = username.replace("username=", "");
+			socket.emit("seenByUser", username);
+		} else {
+			document.getElementById("out").disabled = true;
+			document.getElementById("out").style.visibility = "hidden";
+		}
+
+			function preventBack() {
+	window.history.forward();
+}
+
+setTimeout("preventBack()", 0);
+window.onunload = function() {
+	null
+};
+
+function verify() {
+				if (document.referrer === "http://192.168.43.99:8000/contact-page" ) {
+				socket.emit('cookie', cookie)
+			} else {
+				let cookie = document.cookie.replace("username=", "");
+				socket.emit('join', {prev: document.referrer, username: cookie});
+			}
+		}
+
+	
+			let cookie = document.cookie;
+			if (cookie.indexOf("username=") === -1) {
+				window.location.href =  "http://192.168.43.99:8000/Access-Denied";
+			} else {
+				verify();
+			}
+			
+		}
+
+		function back () {
+			if (document.referrer === "http://192.168.43.99:8000/chat-contacts") {
+				window.location.href = "http://192.168.43.99:8000/chat-contacts";
+				socket.emit('AdminBack');
+			} else {
+				window.location.href = "http://192.168.43.99:8000/contact-page";
+				socket.emit('UserBack', socket.id);
+			}
+			
+		}
+
+		socket.on('objectMessages', (data) => {
+			var arrMessages = data.users;
+			for (let i = 0; i <= arrMessages.length - 1; i++) {
+				var user = arrMessages[i];
+				var message = user['message']
+				var sender = user['fromWho']
+					if (sender === "admin") {
+					var element = '<div class="message-box others-message-box">' +
+									 '<div class="message others-message"> ' + "Admin: " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +'</div>';
+					document.getElementById("message-area").innerHTML += element;
+				} else {
+					var element = '<div class="message-box my-message-box">' +
+								  '<div class="message my-message"> ' + "You: " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +
+								'</div>'
+					document.getElementById("message-area").innerHTML += element;
+				}
+			}
+		})
+
+		socket.on('adminMessages', (data) => {
+			var arrMessages = data.users;
+			for (let i = 0; i <= arrMessages.length - 1; i++) {
+				var user = arrMessages[i];
+				var message = user['message'];
+				var sender = user['fromWho'];
+					if (sender === "admin") {
+					var element = '<div class="message-box my-message-box">' +
+								  '<div class="message my-message"> ' + "You: " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +
+								'</div>'
+					document.getElementById("message-area").innerHTML += element;
+				} else {
+					var element = '<div class="message-box others-message-box">' +
+									 '<div class="message others-message"> ' + sender + ": " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +'</div>';
+					document.getElementById("message-area").innerHTML += element;
+				}
+			}
+		})
+
+		socket.on('loginMessages', (data) => {
+			var arrMessages = data.users;
+			for (let i = 0; i <= arrMessages.length - 1; i++) {
+				var user = arrMessages[i];
+				var message = user['message'];
+				var sender = user['fromWho'];
+					if (sender === "admin") {
+					var element = '<div class="message-box others-message-box">' +
+									 '<div class="message others-message"> ' + "Admin: " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +'</div>';
+					document.getElementById("message-area").innerHTML += element;
+				} else {
+					var element = '<div class="message-box my-message-box">' +
+								  '<div class="message my-message"> ' + "You: " + stripHTML(message) + ' </div>' +
+								  '<div class="separator"></div>' +
+								'</div>'
+					document.getElementById("message-area").innerHTML += element;
+				}
+				
+			}
+		})
+
+		function logout() {
+			let username = document.cookie;
+			username = username.replace("username=", "");
+			document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+			document.cookie = "loggedOut=" + username + "; path=http://192.168.43.99:8000/home";
+			socket.emit('logout', username)
+			window.location.href = "http://192.168.43.99:8000/home"
+		}
+</script>
+
+

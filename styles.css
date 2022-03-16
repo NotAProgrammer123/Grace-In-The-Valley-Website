@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap');
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+}
+
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FF00FF' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+ }
+ 
+ .carousel-control-next-icon {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23FF00FF' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+ }
+
+footer {
+  background-image: url('heaven.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative; 
+  min-width: 100%;
+  bottom:0%;
+}
+
+.container {
+display: flex;
+flex-direction: row;
+min-width: 100vw;
+min-height: 100vh;
+margin-left: 0px;
+margin: 0;
+padding: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.item1{
+  min-width: 50vw;
+  min-height: 100vh;
+}
+
+.item2{
+  min-width: 50vw;
+  min-height: 100vh;
+}
+
+.card {
+  min-height: 100vh;
+  min-width: 50vw;
+}
+
+header{
+  position: relative;
+  height: 4rem;
+  width: 100vw;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111111;
+}
+header .logo{
+  display: flex;
+  align-items: center;
+  padding:1vh 1vw;
+}
+header .bars{
+  margin-right: 10px;
+  position: relative;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+  display: none;
+}
+header .bars::after,
+header .bars::before{
+  position: absolute;
+  content: '';
+  left: 0;
+  height: 3px;
+  width: 20px;
+  border-radius: 2px;
+  background: #888888;
+}
+header .bars::after{
+  bottom: 7px;
+}
+header .bars::before{
+  top: 7px;
+}
+header h2{
+  font-size: 1.2rem;
+  color: #D6D6D6;
+}
+.nav__links{
+  display: flex;
+}
+.nav__links li{
+  position: relative;
+  padding: 0.7vw;
+  border-radius: 5px;
+  margin: 0 0.7vw;
+}
+.nav__links li a{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #888888;
+}
+.nav__links li a span{
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+.nav__links li.active{
+  background: linear-gradient(to right, #bc4e9c, #f80759);
+}
+.nav__links li.active a{
+  color: #111111;
+}
+.nav__links li.active a i{
+  text-shadow: 0 0 3px black;
+}
+section{
+  display: flex;
+  align-items: center;
+}
+section span{
+  color: #888888;
+}
+section span i{
+  margin: 0 1.2vw;
+  font-size: 1.2rem;
+}
+section  img{
+  margin: 0 0.7vw;
+  height: 2rem;
+  width: 2rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
+@media only screen 
+ and (max-width : 551px) {
+  header .logo{
+      margin-right: 50px;
+  }
+  header .bars{
+      display: block;
+      transition: 0.5s;
+  }
+  header .bars.is-active{
+      transform: rotate(90deg);
+    }
+  header .bars.is-active .bars::after{
+  transition: none;
+  }
+  header .bars  .bars::after{
+  transition-delay: 0.3s;
+  }
+  header .bars.is-active  .bars::after{
+  opacity: 0;
+  }
+  header .bars.is-active,
+  header .bars.is-active .bars::before{
+  width: 35px;
+  transform-origin: right;
+  }
+  header .bars.is-active{
+  transform: translateY(15px) rotate(45deg);
+  }
+  header .bars.is-active .bars::before{
+  transform: translateY(-15px) rotate(-45deg);
+  }
+  nav{
+      position: fixed;
+      z-index: 3;
+  }
+  .nav__links{
+      background: #111111;
+      position: fixed;
+      top: 4rem;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      flex-direction: column;
+      pointer-events: none;
+      opacity: 0;
+      transition: 0.5s;
+  }
+  .nav__links li{
+      margin: 0.7vw 0;
+  }
+  .nav__links.open{
+      opacity: 1;
+      pointer-events: all;
+  }
+  .nav__links li.active{
+      animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  @keyframes slide-in-right {
+      0% {
+                transform: translateX(1000px);
+        opacity: 0;
+      }
+      100% {
+                transform: translateX(0);
+        opacity: 1;
+      }
+    }
+}
+
+@media screen and (max-width: 600px) {
+  .container{
+    flex-direction: column;
+  }
+
+  .item1, .item2 {
+    min-width: 100vw;
+  }
+
+  .card {
+    min-width: 100vw;
+  }
+  
+}
+
+.card-text {
+  font-family: Brush Script MT, cursive; font-size: 1.5rem;
+}
