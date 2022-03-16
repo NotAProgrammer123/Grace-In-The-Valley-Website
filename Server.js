@@ -19,7 +19,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const dir = '/Home-Final.html';
 const port = 8000;
-const host = '192.168.43.99';
+const host = '164.92.155.66';
 const eventEmitter = new events.EventEmitter();
 const saltRounds = 10;
 var arrUsers; //
