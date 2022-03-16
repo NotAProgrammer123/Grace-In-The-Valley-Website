@@ -1,0 +1,37 @@
+{
+  "name": "gracevalley",
+  "version": "1.0.0",
+  "description": "Grace In The Valley Website",
+  "main": "Home-Final.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NotAProgrammer123/Grace-In-The-Valley-Website.git"
+  },
+  "keywords": [
+    "None"
+  ],
+  "author": "NotAProgrammer123",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NotAProgrammer123/Grace-In-The-Valley-Website/issues"
+  },
+  "homepage": "https://github.com/NotAProgrammer123/Grace-In-The-Valley-Website#readme",
+  "dependencies": {
+    "axios": "file:axios",
+    "bcrypt": "^5.0.1",
+    "body-parser": "^1.19.2",
+    "check-password-strength": "^2.0.5",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.3",
+    "jsonwebtoken": "^8.5.1",
+    "jwt-check-expiration": "^1.0.5",
+    "moment": "^2.29.1",
+    "mysql2": "^2.3.3",
+    "nodemailer": "^6.7.2",
+    "socket.io": "^4.4.1"
+  }
+}
