@@ -431,7 +431,7 @@ app.use(bodyParser.json())
               db.query("INSERT INTO tokens (email, token, username) VALUES (?, ?, ?)", [email, token, username], (error, res) => {
               if (error) throw error;
             })
-              var link = `http://192.168.43.99:8000/create-account/${token}`;
+              var link = `http://164.92.155.66:8000/create-account/${token}`;
               signToken[email] = JWT_SECRET;
               tokens[email] = token;
               console.log(link)
@@ -536,7 +536,7 @@ app.use(bodyParser.json())
     socket.on("join", (data) => {
       var entryPage = data.prev;
       var username = data.username;
-      if (entryPage === "http://192.168.43.99:8000/chat-contacts") {
+      if (entryPage === "http://164.92.155.66:8000/chat-contacts") {
         socket.join(openChatEmail);
         objUsers.admin = socket.id;
         if (objUsers[openChatEmail]) {
@@ -706,7 +706,7 @@ app.use(bodyParser.json())
             db.query("INSERT INTO tokens (email, token, username) VALUES (?, ?, ?)", [email, token, username], (error, res) => {
               if (error) throw error;
             })
-            var link = `http://192.168.43.99:8000/forgot-change/${token}`;
+            var link = `http://164.92.155.66:8000/forgot-change/${token}`;
             signToken[email] = JWT_SECRET;
             tokens[email] = token;
             console.log(link)
@@ -861,7 +861,7 @@ app.use(bodyParser.json())
             db.query("INSERT INTO tokens (email, token, username) VALUES (?, ?, ?)", [email, token, "none"], (error, res) => {
               if (error) throw error;
             })
-            var link = `http://192.168.43.99:8000/account-deleted/${token}`;
+            var link = `http://164.92.155.66:8000/account-deleted/${token}`;
             signToken[email] = JWT_SECRET;
             tokens[email] = token;
             console.log(link)
@@ -956,7 +956,7 @@ app.use(bodyParser.json())
                   db.query("UPDATE change_email SET token=?, newEmail=? WHERE oldEmail=?", [token, email, oldEmail], (error, res) => {
               if (error) throw error;
             })
-                  var link = `http://192.168.43.99:8000/confirmed/${token}`;
+                  var link = `http://164.92.155.66:8000/confirmed/${token}`;
                   signToken[email] = JWT_SECRET; 
                   tokens[email] = token;
                   console.log(link)
