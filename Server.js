@@ -64,10 +64,11 @@ server.listen(port, host, () => {
 });
 
 const db = mysql.createConnection({
-  host: "192.168.43.99",
-  user: "golden",
-  password: "password",
-  database: 'nodemysql'
+  host: "db-mysql-ams3-81951-do-user-11040713-0.b.db.ondigitalocean.com",
+  user: "Thesele",
+  password: "wJ5nreQtzwYZbQiN",
+  database: 'nodemysql',
+  port: '25060'
 });
 
 db.connect((err) => {
