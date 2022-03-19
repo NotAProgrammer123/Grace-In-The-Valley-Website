@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.43.99:8000');
+var socket = io.connect('164.92.155.66');
 
 	var input = document.getElementById('typing-box');
 	input.addEventListener("keyup", (event) => {
@@ -51,7 +51,7 @@ var socket = io.connect('http://192.168.43.99:8000');
 
 			window.onload = function () {
 
-			if (document.referrer !== "http://192.168.43.99:8000/chat-contacts") {
+			if (document.referrer !== "http://164.92.155.66/chat-contacts") {
 				var username = document.cookie;
 				username = username.replace("username=", "");
 				socket.emit("seenByUser", username);
@@ -70,7 +70,7 @@ var socket = io.connect('http://192.168.43.99:8000');
     };
 
 	function verify() {
-					if (document.referrer === "http://192.168.43.99:8000/contact-page" ) {
+					if (document.referrer === "http://164.92.155.66/contact-page" ) {
 					socket.emit('cookie', cookie)
 				} else {
 					socket.emit('join', {prev: document.referrer});
@@ -80,7 +80,7 @@ var socket = io.connect('http://192.168.43.99:8000');
 		
 				let cookie = document.cookie;
 				if (cookie.indexOf("username=") === -1) {
-					window.location.href =  "http://192.168.43.99:8000/Access-Denied";
+					window.location.href =  "http://164.92.155.66/Access-Denied";
 				} else {
 					verify();
 				}
@@ -88,11 +88,11 @@ var socket = io.connect('http://192.168.43.99:8000');
 			}
 
 			function back () {
-				if (document.referrer === "http://192.168.43.99:8000/chat-contacts") {
-					window.location.href = "http://192.168.43.99:8000/chat-contacts";
+				if (document.referrer === "http://164.92.155.66/chat-contacts") {
+					window.location.href = "http://164.92.155.66/chat-contacts";
 					socket.emit('AdminBack');
 				} else {
-					window.location.href = "http://192.168.43.99:8000/contact-page";
+					window.location.href = "http://164.92.155.66/contact-page";
 					socket.emit('UserBack');
 				}
 				
@@ -165,7 +165,7 @@ var socket = io.connect('http://192.168.43.99:8000');
 				let username = document.cookie;
 				username = username.replace("username=", "");
 				document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-				document.cookie = "loggedOut=" + username + "; path=http://192.168.43.99:8000/home";
+				document.cookie = "loggedOut=" + username + "; path=http://164.92.155.66/home";
 				socket.emit('logout', username)
-				window.location.href = "http://192.168.43.99:8000/home"
+				window.location.href = "http://164.92.155.66/home"
 			}
