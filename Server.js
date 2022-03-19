@@ -19,7 +19,7 @@ const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 const dir = '/Home-Final.html';
 const port = 8000;
-const host = '164.92.155.66';
+const host = '159.223.236.41';
 const eventEmitter = new events.EventEmitter();
 const saltRounds = 10;
 var arrUsers; //
@@ -64,10 +64,10 @@ server.listen(port, host, () => {
 });
 
 const db = mysql.createConnection({
-  host: "db-mysql-ams3-81951-do-user-11040713-0.b.db.ondigitalocean.com",
+  host: "db-mysql-ams3-33374-do-user-11040713-0.b.db.ondigitalocean.com",
   user: "doadmin",
-  password: "wJ5nreQtzwYZbQiN",
-  database: 'nodemysql',
+  password: "KrRidv1Vfoeyr4Zr",
+  database: 'defaultdb',
   port: '25060'
 });
 
