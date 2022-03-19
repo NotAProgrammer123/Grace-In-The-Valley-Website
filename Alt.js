@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.43.99');
+var socket = io.connect('http://164.92.155.66');
 
 function append () {
     let inputPassword = document.getElementById("password").value;
@@ -41,5 +41,5 @@ socket.on('reject', (data) => {
 })
 
 socket.on('redirect', () => {
-  window.location.href = 'http://192.168.43.99:8000/account-created';
+  window.location.href = 'http://164.92.155.66/account-created';
 })
