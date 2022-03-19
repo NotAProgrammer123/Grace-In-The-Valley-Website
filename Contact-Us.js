@@ -1,4 +1,4 @@
-var socket = io.connect("http://192.168.43.99:8000");
+var socket = io.connect("164.92.155.66");
 socket.on("newMessage", (targetUsername) => {
       var cookie = document.cookie;
       var name = cookie.replace("username=", "");
@@ -111,14 +111,14 @@ document.getElementById('btnSubmit').addEventListener('click', function () {
 
 function redirect() {
   if (document.cookie.indexOf('username') === -1 ) {
-      window.location.href = "http://192.168.43.99:8000/login";
+      window.location.href = "http://164.92.155.66/login";
   } else {
       let cookie = document.cookie;
       if (cookie.replace('username=', "") === "Admin") {
-          window.location.href = "http://192.168.43.99:8000/chat-contacts";
+          window.location.href = "164.92.155.66/chat-contacts";
       } else {
-          document.cookie = cookie + "; path=http://192.168.43.99:8000/chat-page";
-          window.location.href = "http://192.168.43.99:8000/chat-page";
+          document.cookie = cookie + "; path=http://164.92.155.66/chat-page";
+          window.location.href = "http://164.92.155.66/chat-page";
       }
       
   
