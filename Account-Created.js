@@ -1,5 +1,5 @@
 function openLogin() {
-    window.location.href = "http://192.168.43.99:8000/login";    
+    window.location.href = "http://164.92.155.66/login";    
 }
 
 function redirect() {
