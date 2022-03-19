@@ -1,4 +1,4 @@
-var socket = io.connect('http://192.168.43.99:8000');
+var socket = io.connect('http://164.92.155.66:8000');
       socket.on("newMessage", (targetUsername) => {
         var cookie = document.cookie;
         var name = cookie.replace("username=", "");
