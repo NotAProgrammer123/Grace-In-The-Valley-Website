@@ -1,5 +1,5 @@
 function openLogin() {
-    window.location.href = "http://164.92.155.66/login";    
+    window.location.href = "https://gracevalleybook.com//login";    
 }
 
 function redirect() {
