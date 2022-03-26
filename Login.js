@@ -1,4 +1,4 @@
-var socket = io.connect('http://164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
 
 function login () {
   var Lusername = document.getElementById("l-username").value;
@@ -65,11 +65,11 @@ document.getElementById('Lflag').focus({preventScroll: false});
     socket.on('accept', (user) => {
       if(document.cookie.indexOf("loggedOut=" + user.username) > -1) {
       document.cookie = "loggedOut=; expires=Thu, 01 Jan 1970 00:00:00 UTC"; //delete all cookies
-      document.cookie = `username=${user.username}; path=http://164.92.155.66/chat-page`;
+      document.cookie = `username=${user.username}; path=https://gracevalleybook.com/chat-page`;
       document.getElementById('Lflag').focus({preventScroll: false});
       document.getElementById('Lflag').innerHTML = "Logged In Successfully";
       } else {
-        document.cookie = `username=${user.username}; path=http://164.92.155.66/chat-page`;
+        document.cookie = `username=${user.username}; path=https://gracevalleybook.com/chat-page`;
         document.cookie = "loggedOut=; expires=Thu, 01 Jan 1970 00:00:00 UTC"; //delete all cookies
         document.getElementById('Lflag').innerHTML = "Logged In Successfully";
         document.getElementById('Lflag').focus({preventScroll: false});
@@ -77,12 +77,12 @@ document.getElementById('Lflag').focus({preventScroll: false});
       
       if (user.username === "Admin") {
         setTimeout(()=> {
-      window.location.href = "http://164.92.155.66/chat-contacts";
-      document.cookie = "username=Admin; path=http://164.92.155.66/chat-contacts"
+      window.location.href = "https://gracevalleybook.com/chat-contacts";
+      document.cookie = "username=Admin; path=https://gracevalleybook.com/chat-contacts"
     }, 3000);
       } else {
         setTimeout(()=> {
-      window.location.href = "http://164.92.155.66/chat-page";
+      window.location.href = "https://gracevalleybook.com/chat-page";
     }, 3000);
       }
       
