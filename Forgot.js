@@ -1,4 +1,4 @@
-var socket = io.connect('http://164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
 var oldEmail;
 function change () {
   var forgot = document.getElementById('forgot').selected;
@@ -193,7 +193,7 @@ socket.on("accountUpdated", () => {
   document.getElementById("flag").innerHTML = "Account updated!";
   document.getElementById('flag').focus({preventScroll: false});
   function redirect () {
-      window.location.href = "http://164.92.155.66/login";
+      window.location.href = "https://gracevalleybook.com/login";
   }
   setTimeout(redirect, 3000);
 })
@@ -233,7 +233,7 @@ socket.on("bounce", (email) => {
 document.getElementById("flag").innerHTML = "Input accepted. You will now be redirected to an email reset page"
 document.getElementById('flag').focus({preventScroll: false});
 function bounce () {
-  window.location.href = "http://164.92.155.66/new-email";
+  window.location.href = "https://gracevalleybook.com/new-email";
 }
 setTimeout(bounce, 3000);
 
