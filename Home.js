@@ -1,4 +1,4 @@
-var socket = io.connect('http://159.223.236.41');
+var socket = io.connect('https://gracevalleybook.com');
 
  
 
