@@ -16,11 +16,11 @@
     
       <nav>
         <ul class="nav__links">
-          <li><a href="http://164.92.155.66/home"><i class="fi-sr-home"></i><span>Home</span></a></li>
-          <li><a href="http://164.92.155.66/my-life-story"><i class="fi-sr-document"></i><span>My Life Story</span></a></li>
-          <li><a href="http://164.92.155.66/about-author"><i class="fi-sr-folder"></i><span>About Author</span></a></li>
-          <li><a href="http://164.92.155.66/purchase"><i class="fi-sr-comment-alt"></i><span>Purchase Book</span></a></li>
-          <li><a href="http://164.92.155.66/contact-page"><i class="fi-sr-smartphone"></i><span>Contact Us</span></a></li>
+          <li><a href="https://gracevalleybook.com/home"><i class="fi-sr-home"></i><span>Home</span></a></li>
+          <li><a href="https://gracevalleybook.com/my-life-story"><i class="fi-sr-document"></i><span>My Life Story</span></a></li>
+          <li><a href="https://gracevalleybook.com/about-author"><i class="fi-sr-folder"></i><span>About Author</span></a></li>
+          <li><a href="https://gracevalleybook.com/purchase"><i class="fi-sr-comment-alt"></i><span>Purchase Book</span></a></li>
+          <li><a href="https://gracevalleybook.com/contact-page"><i class="fi-sr-smartphone"></i><span>Contact Us</span></a></li>
         </ul>
       </nav>
       <section>
@@ -351,7 +351,7 @@ font-size: 25px;
 </style>
 
 <script type="text/javascript">
-    var socket = io.connect('http://164.92.155.66');
+    var socket = io.connect('https://gracevalleybook.com');
     function execute () {
         var inputUsername = document.getElementById("username").value.trim();
 var inputPassword = document.getElementById("password").value.trim();
@@ -416,7 +416,7 @@ socket.on("accountUpdated", () => {
   document.getElementById("flag").innerHTML = "Account updated!";
   document.getElementById('flag').focus({preventScroll: false});
   function redirect () {
-      window.location.href = "http://164.92.155.66/login";
+      window.location.href = "https://gracevalleybook.com/login";
   }
   setTimeout(redirect, 3000);
 })
