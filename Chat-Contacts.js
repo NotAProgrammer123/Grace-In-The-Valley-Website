@@ -52,7 +52,7 @@ var socket = io.connect('https://gracevalleybook.com');
         socket.emit('listen');  
         let cookie = document.cookie;
 				if (cookie.indexOf("username=Admin") === -1) {
-					window.location.href = "http://164.92.155.66/Access-Denied";
+					window.location.href = "https://gracevalleybook.com/Access-Denied";
 				} 
     }
 
@@ -63,7 +63,7 @@ var socket = io.connect('https://gracevalleybook.com');
             var user = arrUsers[i];
             var insert = '"' + user + '"' + '>';
             var insert1 = '"' + data.email[i] + "1" + '"' ;
-            var element = '<a class="rdr"  onclick = "openChat(this.id)" href = "http://164.92.155.66/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + user + '</button><li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + user + '<div class="badge-container" id=' + insert1 + 'style="float:right; visibility:hidden; height: 4vh"><div class="badge__value" id =' + '"' + data.email[i] + '"' + '>' + '0</div></div></div> </li></a>';
+            var element = '<a class="rdr"  onclick = "openChat(this.id)" href = "https://gracevalleybook.com/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + user + '</button><li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + user + '<div class="badge-container" id=' + insert1 + 'style="float:right; visibility:hidden; height: 4vh"><div class="badge__value" id =' + '"' + data.email[i] + '"' + '>' + '0</div></div></div> </li></a>';
             var lastChild = document.getElementsByClassName("contacts__list")[document.getElementsByClassName("contacts__list").length - 1];
             div.innerHTML +=  element;
             if (user !== "Admin") {
@@ -114,7 +114,7 @@ var socket = io.connect('https://gracevalleybook.com');
        var sNew = ident.replace(" ", "");
        var lastChild = document.getElementsByClassName("contacts__list")[document.getElementsByClassName("contacts__list").length - 1];
        var insertEmail = '"' + data.email + '"' + '>';
-       var element = '<a class="rdr" onclick = "openChat(this.id)" href = "http://164.92.155.66/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + data.username + '</button><li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + data.username + '<div class="badge-container" id=' + insert1 + 'style="float:right; visibility:hidden; height: 4vh"><div class="badge__value" id =' + '"' + sNew + '"' + '>' + '0</div></div></div></li></a>';
+       var element = '<a class="rdr" onclick = "openChat(this.id)" href = https://gracevalleybook.com/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + data.username + '</button><li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + data.username + '<div class="badge-container" id=' + insert1 + 'style="float:right; visibility:hidden; height: 4vh"><div class="badge__value" id =' + '"' + sNew + '"' + '>' + '0</div></div></div></li></a>';
        var lastChild = document.getElementsByClassName("contacts__list")[document.getElementsByClassName("contacts__list").length - 1];
        div.innerHTML +=  element;
        lastChild.appendChild(div);
@@ -146,7 +146,7 @@ var socket = io.connect('https://gracevalleybook.com');
        var insert = '"' + data.name + '"' + '>';
        var menu = document.getElementById('allcontacts');
        document.getElementById(data.name).remove();
-       var element = '<a class="rdr" onclick = "openChat(this.id)" href = "http://164.92.155.66/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + data.name + '</button>' + '<li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + data.name + '<div class="badge-container" style="float:right; height: 4vh"><div class="badge__value" id =' + '"' + data.email + '"' + '>' +  count + '</div></div></div></li></a> ';
+       var element = '<a class="rdr" onclick = "openChat(this.id)" href = "https://gracevalleybook.com/chat-page" id=' + insert + '<button style="visibility:hidden" onclick="blockUser(this.innerHTML)" class="BlockButton">' + "Block " + data.name + '</button>' + '<li class="contacts__item" style="height: 9vh"><div class = "contact" style="height:6vh">' + data.name + '<div class="badge-container" style="float:right; height: 4vh"><div class="badge__value" id =' + '"' + data.email + '"' + '>' +  count + '</div></div></div></li></a> ';
        div.innerHTML += element;
        menu.insertBefore(div, anchor);
        document.getElementById("heading").innerHTML = "Recent Messages";
@@ -156,7 +156,7 @@ var socket = io.connect('https://gracevalleybook.com');
     function logout() {
       document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC"; //delete all cookies
       socket.emit('logout', "Admin");
-      window.location.href = "http://164.92.155.66/home";
+      window.location.href = "https://gracevalleybook.com/home";
     }
     
 
