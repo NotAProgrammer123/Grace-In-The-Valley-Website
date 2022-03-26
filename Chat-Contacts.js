@@ -1,4 +1,4 @@
-var socket = io.connect('http://164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
 
     function blockUser(data) {
     document.getElementById('cancel').style.visibility = "hidden"
@@ -10,7 +10,7 @@ var socket = io.connect('http://164.92.155.66');
        var element =  document.getElementsByClassName("BlockButton").item(i);
        var aTag = document.getElementsByClassName("rdr")[i];
        element.style.visibility = "hidden";
-       aTag.setAttribute("href", "164.92.155.66/chat-page");
+       aTag.setAttribute("href", "https://gracevalleybook.com/chat-page");
 
     }
   }
@@ -23,7 +23,7 @@ var socket = io.connect('http://164.92.155.66');
        var aTag = document.getElementsByClassName("rdr")[i];
        element.style.visibility = "hidden";
        document.getElementById('cancel').visibility = "visible";
-       aTag.setAttribute("href", "http://164.92.155.66/chat-page");
+       aTag.setAttribute("href", "https://gracevalleybook.com/chat-page");
 
     }
   }
