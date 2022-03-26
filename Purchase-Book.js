@@ -1,4 +1,4 @@
-var socket = io.connect('http://164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
             socket.on("newMessage", (targetUsername) => {
             var cookie = document.cookie;
             var name = cookie.replace("username=", "");
