@@ -1,4 +1,4 @@
-var socket = io.connect('http://164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
 
 function append () {
     let inputPassword = document.getElementById("password").value;
@@ -41,5 +41,5 @@ socket.on('reject', (data) => {
 })
 
 socket.on('redirect', () => {
-  window.location.href = 'http://164.92.155.66/account-created';
+  window.location.href = 'https://gracevalleybook.com/account-created';
 })
