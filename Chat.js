@@ -1,4 +1,4 @@
-var socket = io.connect('164.92.155.66');
+var socket = io.connect('https://gracevalleybook.com');
 
 	var input = document.getElementById('typing-box');
 	input.addEventListener("keyup", (event) => {
@@ -51,7 +51,7 @@ var socket = io.connect('164.92.155.66');
 
 			window.onload = function () {
 
-			if (document.referrer !== "http://164.92.155.66/chat-contacts") {
+			if (document.referrer !== "https://gracevalleybook.com/chat-contacts") {
 				var username = document.cookie;
 				username = username.replace("username=", "");
 				socket.emit("seenByUser", username);
@@ -70,7 +70,7 @@ var socket = io.connect('164.92.155.66');
     };
 
 	function verify() {
-					if (document.referrer === "http://164.92.155.66/contact-page" ) {
+					if (document.referrer === "https://gracevalleybook.com/contact-page" ) {
 					socket.emit('cookie', cookie)
 				} else {
 					socket.emit('join', {prev: document.referrer});
@@ -80,7 +80,7 @@ var socket = io.connect('164.92.155.66');
 		
 				let cookie = document.cookie;
 				if (cookie.indexOf("username=") === -1) {
-					window.location.href =  "http://164.92.155.66/Access-Denied";
+					window.location.href =  "https://gracevalleybook.com/Access-Denied";
 				} else {
 					verify();
 				}
@@ -88,11 +88,11 @@ var socket = io.connect('164.92.155.66');
 			}
 
 			function back () {
-				if (document.referrer === "http://164.92.155.66/chat-contacts") {
-					window.location.href = "http://164.92.155.66/chat-contacts";
+				if (document.referrer === "https://gracevalleybook.com/chat-contacts") {
+					window.location.href = "https://gracevalleybook.com/chat-contacts";
 					socket.emit('AdminBack');
 				} else {
-					window.location.href = "http://164.92.155.66/contact-page";
+					window.location.href = "https://gracevalleybook.com/contact-page";
 					socket.emit('UserBack');
 				}
 				
@@ -165,7 +165,7 @@ var socket = io.connect('164.92.155.66');
 				let username = document.cookie;
 				username = username.replace("username=", "");
 				document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-				document.cookie = "loggedOut=" + username + "; path=http://164.92.155.66/home";
+				document.cookie = "loggedOut=" + username + "; path=https://gracevalleybook.com/home";
 				socket.emit('logout', username)
-				window.location.href = "http://164.92.155.66/home"
+				window.location.href = "https://gracevalleybook.com/home"
 			}
