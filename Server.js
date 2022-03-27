@@ -692,6 +692,7 @@ app.use(bodyParser.json())
 
     socket.on('forgot', (email) => {
       db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
+            console.log(result);
         if (result.length !== 0) {
           var count = result[0]["count(*)"];
         var username = result[0]["username"];
