@@ -73,6 +73,9 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) throw err;
+    db.query('SELECT * FROM accounts', (err, res) => {
+      console.log(res);
+    })
 })
 
 //express.js middleware
