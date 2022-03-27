@@ -73,9 +73,6 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) throw err;
-    db.query('SELECT * FROM accounts', (err, res) => {
-      console.log(res);
-    })
 })
 
 //express.js middleware
@@ -360,7 +357,7 @@ app.use(bodyParser.json())
         var loginUsername = data.username;
         var loginPassword = data.password;
         
-        db.query("SELECT password, email FROM accounts WHERE username=? AND verified=1", [loginUsername], (err, results) => {
+        db.query("SELECT password, email FROM accounts WHERE username=? AND verified=0", [loginUsername], (err, results) => {
           if (results.length === 0) {
             socket.emit('reject', {reject: "Invalid Username Entered"})
           } else {
