@@ -691,6 +691,8 @@ app.use(bodyParser.json())
     })
 
     socket.on('forgot', (email) => {
+          
+          console.log(email);
 
       let myPromise = new Promise((resolve, reject) => {
         db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
