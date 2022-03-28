@@ -695,10 +695,12 @@ app.use(bodyParser.json())
       let myPromise = new Promise((resolve, reject) => {
         db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
           resolve(result);
+              console.log(result);
         });
       });
 
       myPromise.then((result) => {
+             console.log(result);
         if (result.length !== 0) {
           var count = result[0]["count(*)"];
         var username = result[0]["username"];
