@@ -73,7 +73,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) throw err;
-      db.query("SELECT count(*), username FROM accounts WHERE email=?", ['thesele.setsabi@gmail.com'], (err, result) => {
+      db.query("SELECT count(*), username FROM accounts", (err, result) => {
               console.log(result);
         });
 })
