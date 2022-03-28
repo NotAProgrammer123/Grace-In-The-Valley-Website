@@ -691,8 +691,14 @@ app.use(bodyParser.json())
     })
 
     socket.on('forgot', (email) => {
-      db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
-            console.log(result);
+
+      let myPromise = new Promise((resolve, reject) => {
+        db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
+          resolve(result);
+        });
+      });
+
+      myPromise.then((result) => {
         if (result.length !== 0) {
           var count = result[0]["count(*)"];
         var username = result[0]["username"];
@@ -707,7 +713,7 @@ app.use(bodyParser.json())
             db.query("INSERT INTO tokens (email, token, username) VALUES (?, ?, ?)", [email, token, username], (error, res) => {
               if (error) throw error;
             })
-            var link = `https://gracevalleybook.com/forgot-change/${token}`;
+            var link = `http://192.168.43.99:8000/forgot-change/${token}`;
             signToken[email] = JWT_SECRET;
             tokens[email] = token;
             console.log(link)
@@ -740,8 +746,10 @@ app.use(bodyParser.json())
           MailOut();  
         }
       }
-    })
+     }
+    );   
   })
+
 
     socket.on("change", (data) => {
       var email = data.email;
