@@ -698,7 +698,7 @@ app.use(bodyParser.json())
           console.log(email);
 
       let myPromise = new Promise((resolve, reject) => {
-        db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
+        db.query("SELECT count(*), username FROM accounts WHERE email=? ORDER BY ASC", [email], (err, result) => {
           resolve(result);
               console.log(result);
         });
