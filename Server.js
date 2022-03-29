@@ -606,10 +606,10 @@ app.use(bodyParser.json())
     socket.on('cookie', (cookie) => {
      var userCookie = cookie;
      userCookie = userCookie.replace("username=", "")
-      db.query( "SELECT count(*), email FROM accounts WHERE username=?", [userCookie], (err, results) => {
+      db.query( "SELECT email FROM accounts WHERE username=?", [userCookie], (err, results) => {
         if (err) throw err;
         if (results.length !== 0) {
-          var count = results[0]['count(*)'];
+          var count = results.length;
           var email = results[0]['email'];
           if (count != 0) {
             socket.join(email);
@@ -666,7 +666,7 @@ app.use(bodyParser.json())
           console.log(email);
 
       let myPromise = new Promise((resolve, reject) => {
-        db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
+        db.query("SELECT username FROM accounts WHERE email=?", [email], (err, result) => {
           resolve(result);
               console.log(result);
         });
@@ -675,7 +675,7 @@ app.use(bodyParser.json())
       myPromise.then((result) => {
              console.log(result);
         if (result.length !== 0) {
-          var count = result[0]["count(*)"];
+          var count = result.length;
         var username = result[0]["username"];
         if (count === 0) {
           socket.emit("EmailNotFound", {reject: "No such email address is registered to our accounts. Please try again."} )
