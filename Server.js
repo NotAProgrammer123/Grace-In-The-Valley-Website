@@ -73,7 +73,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) throw err;
-      db.query("SELECT COUNT(email), email FROM accounts", (err, result) => {
+      db.query("SELECT COUNT(*), email FROM accounts ORDER BY verified", (err, result) => {
               console.log(result);
         });
 })
@@ -698,7 +698,7 @@ app.use(bodyParser.json())
           console.log(email);
 
       let myPromise = new Promise((resolve, reject) => {
-        db.query("SELECT count(*), username FROM accounts WHERE email=? ORDER BY ASC", [email], (err, result) => {
+        db.query("SELECT count(*), username FROM accounts WHERE email=?", [email], (err, result) => {
           resolve(result);
               console.log(result);
         });
