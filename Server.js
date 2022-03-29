@@ -73,9 +73,6 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) throw err;
-      db.query("SELECT COUNT(*), email FROM accounts GROUP BY verified", (err, result) => {
-              console.log(result);
-        });
 })
 
 //express.js middleware
@@ -281,36 +278,7 @@ app.use(bodyParser.json())
     })
 
     app.post('/create-account/:token', (req, res) => {
-      var username;
-      var email
-      db.query("SELECT username, email FROM tokens WHERE token=?", [req.params.token], (err, res) => {
-        if (err) throw err;
-        username = res[0]["username"];
-        email = res[0]["email"];
-      })
-        var newPassword = req.body.password.trim();
-        bcrypt.hash(newPassword, saltRounds, (prb, hash) => {
-          if (prb) throw prb;
-    
-          function createAccount() {
-            if (
-              passwordStrength(newPassword).length >= 8
-           && passwordStrength(newPassword).contains.indexOf('uppercase') > -1 === true
-           && passwordStrength(newPassword).contains.indexOf('lowercase') > -1 === true
-           && passwordStrength(newPassword).contains.indexOf('symbol') > -1 === true
-           ) {
-            db.query("INSERT INTO accounts (username, password, email, logstatus, blocked, verified) VALUES (?,?,?,?,?,?)", [username, hash, email, "out", 0, 1], (err, results) => {
-              if (err) throw err;
-              eventEmitter.emit('newAccount', username, email);
-              io.sockets.emit('redirect');
-            })   
-           } else {
-             io.sockets.emit('reject', {reject: "Your password is too weak. Ensure that your password is at least 8 characters long, contains at least 1 uppercase letter, 1 lowercase letter and 1 symbol"})
-           }
-           
-          }
-          createAccount();
-        });
+      console.log(req.body);
     })
 
     io.on('connection', (socket) => {
